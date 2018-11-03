@@ -1,21 +1,25 @@
 const mongoose = require('mongoose');
 
 const ArticleSchema = new mongoose.Schema({
-  headline: {
+  label: {
     type: String,
-    required: 'Headline is required'
+    required: 'Label is required'
   },
-  summary: {
+  title: {
     type: String,
-    required: 'Summary is required'
+    required: 'Title is required'
   },
   url: {
     type: String,
-    required: 'URL is required',
+    required: 'Description is required',
     match: [
       /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/,
       'Please enter a valid URL'
     ]
+  },
+  description: {
+    type: String,
+    required: 'Description is required'
   },
   comment: {
     type: mongoose.Schema.Types.ObjectId,
