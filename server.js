@@ -3,7 +3,7 @@ const logger = require('morgan');
 const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
@@ -13,8 +13,10 @@ app.set('view engine', '.hbs');
 app.use(logger('dev'));
 app.use(express.static('public'));
 
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/newsdb';
+
 mongoose.connect(
-  'mongodb://localhost/newsdb',
+  MONGODB_URI,
   { useNewUrlParser: true }
 );
 
