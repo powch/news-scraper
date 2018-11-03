@@ -1,11 +1,12 @@
 const cheerio = require('cheerio');
+const createCollection = require('./createCollection');
 
 module.exports = response => {
   const $ = cheerio.load(response.data);
 
-  const articles = {};
-
   $('.ArticleListItem').each((i, element) => {
+    const articles = {};
+
     articles.url =
       'https://news.blizzard.com' +
       $(element)
@@ -36,6 +37,6 @@ module.exports = response => {
       .children('.h6')
       .text();
 
-    return articles;
+    createCollection(articles);
   });
 };

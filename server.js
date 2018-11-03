@@ -7,8 +7,8 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-app.engine('.hbs', exphbs({ defaultLayout: 'main' }));
-app.set('view engine', '.hbs');
+app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }));
+app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.static('public'));
