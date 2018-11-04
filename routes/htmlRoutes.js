@@ -1,13 +1,10 @@
 const db = require('../models');
+const axios = require('axios');
+const createArticles = require('../helpers/createArticle');
 
-module.exports = (app) => {
-
-  app.get('/', (req, res) => {
+module.exports = app => {
+  app.get('/home', (req, res) => {
     db.Article.find()
-      .then(articles => {
-        console.log(articles);
-        res.render('home', {articles});
-      });
+      .then(articles => res.render('home', { articles }));
   });
-
 };

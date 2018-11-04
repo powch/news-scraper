@@ -1,16 +1,17 @@
 <div class="container">
   <h1 class="mb-4">Activision-Blizzard News! Now with less Diablo!</h1>
 
-  {{#each articles}}
-  <div class="list-group mb-4">
-    <a href="{{this.url}}" target="_blank" class="list-group-item list-group-item-action flex-column align-items-start">
+  <ul class="list-group">
+    {{#each articles}}
+    <li class="mb-3 list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{this.title}}</h5>
         <small>{{this.label}}</small>
       </div>
-      <p class="mb-1">{{this.description}}</small>
-    </a>
-  </div>
-  {{/each}}
+      <p class="mb-1">{{this.description}}</p>
+      <a href="{{this.url}}" target="_blank" class="btn btn-primary">Full Article</a>
+    </li>
+    {{/each}}
+  </ul>
   
 </div>
