@@ -5,15 +5,15 @@ module.exports = response => {
   const $ = cheerio.load(response.data);
 
   $('.ArticleListItem').each((i, element) => {
-    const articles = {};
+    const Articles = {};
 
-    articles.url =
+    Articles.url =
       'https://news.blizzard.com' +
       $(element)
         .children()
         .attr('href');
 
-    articles.label = $(element)
+    Articles.label = $(element)
       .children()
       .next()
       .children('.ArticleListItem-contentGrid')
@@ -22,14 +22,14 @@ module.exports = response => {
       .children()
       .text();
 
-    articles.title = $(element)
+    Articles.title = $(element)
       .children()
       .next()
       .children('.ArticleListItem-contentGrid')
       .children('h3')
       .text();
 
-    articles.description = $(element)
+    Articles.description = $(element)
       .children()
       .next()
       .children('.ArticleListItem-contentGrid')
@@ -37,6 +37,6 @@ module.exports = response => {
       .children('.h6')
       .text();
 
-    createCollection(articles);
+    createCollection(Articles);
   });
 };

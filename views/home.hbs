@@ -1,6 +1,6 @@
 <nav class="mb-3 navbar navbar-light bg-light">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand mx-auto" href="/">
       <h1>Activision-Blizzard News! Now with less Diablo!</h1>
     </a>
   </div>
@@ -12,7 +12,7 @@
     <div class="col-sm-9">
       <ul class="list-group">
         {{#each articles}}
-        <li data-id="{{this.id}}" class="mb-3 list-group-item list-group-item-action flex-column align-items-start">
+        <li data-id="{{this._id}}" class="mb-3 list-group-item list-group-item-action flex-column align-items-start" id="listItem">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">{{this.title}}</h5>
             <small>{{this.label}}</small>
@@ -24,11 +24,26 @@
       </ul>
     </div>
     <div class="col-sm-3">
-      <div class="row"><h3>Comments</h3></div>
       <div class="row">
-
+        <h3>Comments</h3>
+      </div>
+      <div class="row mb-5">
+        <button class="btn btn-primary btn-block mb-3" type="button" data-toggle="collapse" data-target="#commentSection" aria-expanded="false"
+          aria-controls="commentSection">
+          Toggle Comments
+        </button>
+        <div class="collapse" id="commentSection">
+          <ul>
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
+          </ul>
+        </div>
       </div>
       <div class="row">
+        <h3>Add a Comment</h3>
+        <hr>
         <div class="form">
           <div class="form-group">
             <label for="commentTitle">Comment Title</label>
@@ -43,5 +58,5 @@
       </div>
     </div>
   </div>
-  
+
 </div>
