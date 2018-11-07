@@ -1,4 +1,6 @@
+$.noConflict();
 $('.list-group').on('click', '#listItem', function() {
+
 
   $('#commentSection').empty();
 
@@ -8,19 +10,24 @@ $('.list-group').on('click', '#listItem', function() {
 
   console.log(articleID);
 
-  // $.get(`/articles/${articleID}`)
-  //   .then((article) => {
-  //     console.log(article);
-  //   });
+  $.get(`/articles/${articleID}`)
+    .then(function(article) {
+      const comment = article.comment;
+      
+      if (comment) {
+        $('#commentSection').append(`<h5>${comment.title}</h5>`);
+        $('#commentSection').append(`<p>${comment.body}</p>`);
+      } else {
+        $('#commentSection').append('<h5>No Comments Yet!</h5>');
+      }
+
+      console.log(article);
+    });
 });
 
 $('#submitBtn').on('click', function() {
 
-  $.noConflict();
-
   const articleID = $(this).attr('data-id');
-
-  console.log($('#commentTitle').val(), $('#commentText').val());
 
   $.post(`/comment/${articleID}`, {
     title: $('#commentTitle').val(),

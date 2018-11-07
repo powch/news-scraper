@@ -12,14 +12,19 @@ module.exports = app => {
       });
   });
 
+  app.get('/articles/:id', (req, res) => {
+    db.Article.findOne({ _id: req.params.id })
+      .populate('comment')
+      .then(dbArticle => res.json(dbArticle))
+      .catch(err => res.json(err));
+  });
+
   app.post('/comment/:id', (req, res) => {
     db.Comment.create(req.body)
       .then(dbNote => {
         return db.Article.findOneAndUpdate({ _id: req.params.id }, { comment: dbNote._id }, { new: true });
       })
-      .then(dbArticle => {
-        res.json(dbArticle);
-      })
+      .then(dbArticle => res.json(dbArticle))
       .catch(err => res.json(err));
   });
 };

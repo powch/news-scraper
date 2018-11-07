@@ -12,6 +12,7 @@ app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.static('public'));
+app.use(express.urlencoded({extended: true}));
 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/newsdb';
 
